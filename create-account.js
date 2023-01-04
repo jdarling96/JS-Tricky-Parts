@@ -3,14 +3,14 @@ function createAccount(pin, amount = 0) {
     let initialAmount = amount
 
     return obj = {
-        checkBalance: function(insertPin){
+        checkBalance(insertPin){
             if(insertPin === userPin){
                 return `$${initialAmount}`
             } else{
                 return "Invalid PIN."
             }
         },
-        deposit: function(insertPin, insertAmount){
+        deposit(insertPin, insertAmount){
             if(insertPin === userPin && !isNaN(insertAmount)){
                 initialAmount += insertAmount
                 return `Succesfully deposited $${insertAmount}. Current balance: $${initialAmount}.`
@@ -20,7 +20,7 @@ function createAccount(pin, amount = 0) {
             }
 
         },
-        withdraw: function(insertPin, withdraw){
+        withdraw(insertPin, withdraw){
             if(withdraw > initialAmount) return "Withdrawal amount exceeds account balance. Transaction cancelled."
             if(insertPin === userPin && !isNaN(withdraw)){
                 initialAmount -= withdraw
@@ -30,7 +30,7 @@ function createAccount(pin, amount = 0) {
                 return "Invalid PIN."
             }
         },
-        changePin: function(oldPin, newPin){
+        changePin(oldPin, newPin){
             if(oldPin === userPin){
                 userPin = newPin
                 return "PIN successfully changed!"

@@ -5,19 +5,18 @@ function guessingGame() {
   let won = false;
   return function (guess) {
     numberGuesses++;
-    if (!won) {
+    if (won) return "The game is over, you already won!";
       if (guess === winningNumber) {
         won = true;
-        return `You win! You found ${winningNumber} in ${numberGuesses} guesses.`;
+        const isPlural = numberGuesses === 1 ? "guess" : "guesses"
+        return `You win! You found ${winningNumber} in ${numberGuesses} ${isPlural}.`;
       } else if (guess > winningNumber) {
         return `${guess} is too high!`;
       } else {
         return `${guess} is too low!`;
       }
-    } else {
-      return "The game is over, you already won!";
-    }
-  };
+    } 
+  
 }
 
 module.exports = { guessingGame };
